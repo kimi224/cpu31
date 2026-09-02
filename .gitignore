@@ -1,313 +1,133 @@
-## Core latex/pdflatex auxiliary files:
-*.aux
-*.lof
+# ============================================================
+# Vivado / Xilinx 工程产物
+# ============================================================
+
+# Vivado 工程文件与运行目录
+# 注意：*.xpr 内含本机绝对路径与用户配置，不入库。
+# 工程请用 verify/ 下的 TCL 脚本重建。
+*.xpr
+*.xsa
+*.xpe
+*.xpr.bak
+*.runs/
+*.cache/
+*.hw/
+*.sim/
+*.ip_user_files/
+*.srcs/utils/
+.Xil/
+xsim.dir/
+webtalk/
+webtalk_*
+*.wdb
+*.wcfg
+*.vcd
+
+# Vivado 日志、journal、报告
+*.jou
 *.log
-*.lot
-*.fls
-*.out
-*.toc
-*.fmt
-*.fot
-*.cb
-*.cb2
-.*.lb
+*.str
+*.pb
+*.debug
+*.rpt
 
-## Intermediate documents:
-*.dvi
-*.xdv
-*-converted-to.*
-# these rules might exclude image files for figures etc.
-# *.ps
-# *.eps
-# *.pdf
+# Vivado 崩溃备份
+vivado_*.backup.*
+*.backup.*
 
-## Generated if empty string is given at "Please type another file name for output:"
-.pdf
+# 比特流与烧写文件
+*.bit
+*.bin
+*.mcs
+*.prm
+*.ltx
+*.rbt
 
-## Bibliography auxiliary files (bibtex/biblatex/biber):
-*.bbl
-*.bbl-SAVE-ERROR
-*.bcf
-*.bcf-SAVE-ERROR
-*.blg
-*-blx.aux
-*-blx.bib
-*.run.xml
+# 老式 ISE 残留
+*.bld
+*.ncd
+*.ngd
+*.xwbt
+*.mrp
+*.pad
+*.par
+*.twr
+*.unroutes
+*.xpi
+*.xst
 
-## Build tool auxiliary files:
-*.fdb_latexmk
-*.synctex
-*.synctex(busy)
-*.synctex.gz
-*.synctex.gz(busy)
-*.pdfsync
-*.rubbercache
-rubber.cache
+# ============================================================
+# IP 核：只保留 .xci 与手写/必需文件，其余由 Vivado 重新生成
+# ============================================================
+cpu31-test.srcs/sources_1/ip/.Xil/
+cpu31-test.srcs/sources_1/ip/*/.Xil/
+cpu31-test.srcs/sources_1/ip/*/dist_mem_gen_v8_0_10/
+cpu31-test.srcs/sources_1/ip/*/doc/
+cpu31-test.srcs/sources_1/ip/*/synth/
+cpu31-test.srcs/sources_1/ip/*/*.veo
+cpu31-test.srcs/sources_1/ip/*/*.vho
+cpu31-test.srcs/sources_1/ip/*/*.xml
+cpu31-test.srcs/sources_1/ip/*/*_ooc.xdc
+cpu31-test.srcs/sources_1/ip/*/*_sim_netlist.v
+cpu31-test.srcs/sources_1/ip/*/*_sim_netlist.vhdl
+cpu31-test.srcs/sources_1/ip/*/*_stub.vhdl
+cpu31-test.srcs/sources_1/ip/*/usage_statistics_webtalk.*
+# IP 目录下的 coe 是 verify/coe/ 的副本，保留 verify/coe/ 作为唯一来源
+cpu31-test.srcs/sources_1/ip/*/*.coe
+# 废弃的板级指令存储器分支
+cpu31-test.srcs/sources_1/ip/imem_board/
 
-## Build tool directories for auxiliary files
-# latexrun
-latex.out/
+# ============================================================
+# 课程资料：教师提供的 PDF，不对外分发
+# ============================================================
+cpu31-test.srcs/docs/
 
-## Auxiliary and intermediate files from other packages:
-# algorithms
-*.alg
-*.loa
+# ============================================================
+# 脚本运行期产物
+# ============================================================
+/tmp/
+/postsim_top_new.dcp
+/postsim_timesim_new.v
+/postsim_timesim_new.sdf
 
-# achemso
-acs-*.bib
+# verify 下的日志与私有产物
+verify/*.log
+verify/*.backup.log
+verify/*.pb
+verify/pdf_pages/
 
-# amsthm
-*.thm
+# ------------------------------------------------------------
+# verify/ 下"不随公开仓库发布"的文件
+# （本机文件仍然保留，只是不提交）
+#
+# 1) 硬编码本机绝对路径的一次性/半成品脚本：
+verify/cleanup_project.ps1
+verify/update_project_files.ps1
+verify/build_mars_reference_results.ps1
+verify/build_test_case.ps1
+# 下面三个与同名的 .py 版本功能重复，且路径写死，公开版只保留 .py
+verify/normalize_frontsim_result.ps1
+verify/reference_mips31.ps1
+verify/run_vivado_postsynth_xsim.ps1
+# 2) 依赖未入库的 cpu31-test.xpr：
+verify/run_board_bitstream.tcl
+# 3) 探索性/被替代的时序实验脚本：
+verify/run_vivado_postsim_impl_17ns.tcl
+verify/run_vivado_postsim_synth_only.tcl
+# 4) 可重新生成的比对结果（各约 0.5 MB，由脚本重建即可）：
+verify/normalized_frontsim_result.txt
+verify/reference_result_simulate.txt
 
-# attachfile2
-*.atfi
-
-# beamer
-*.nav
-*.pre
-*.snm
-*.vrb
-
-# changes
-*.soc
-*.loc
-
-# comment
-*.cut
-
-# cprotect
-*.cpt
-
-# elsarticle (documentclass of Elsevier journals)
-*.spl
-
-# endnotes
-*.ent
-
-# fixme
-*.lox
-
-# feynmf/feynmp
-*.mf
-*.mp
-*.t[1-9]
-*.t[1-9][0-9]
-*.tfm
-
-#(r)(e)ledmac/(r)(e)ledpar
-*.end
-*.?end
-*.[1-9]
-*.[1-9][0-9]
-*.[1-9][0-9][0-9]
-*.[1-9]R
-*.[1-9][0-9]R
-*.[1-9][0-9][0-9]R
-*.eledsec[1-9]
-*.eledsec[1-9]R
-*.eledsec[1-9][0-9]
-*.eledsec[1-9][0-9]R
-*.eledsec[1-9][0-9][0-9]
-*.eledsec[1-9][0-9][0-9]R
-
-# glossaries
-*.acn
-*.acr
-*.glg
-*.glo
-*.gls
-*.glsdefs
-*.lzo
-*.lzs
-*.slg
-*.slo
-*.sls
-
-# uncomment this for glossaries-extra (will ignore makeindex's style files!)
-# *.ist
-
-# gnuplot
-*.gnuplot
-*.table
-
-# gnuplottex
-*-gnuplottex-*
-
-# gregoriotex
-*.gaux
-*.glog
-*.gtex
-
-# htlatex
-*.4ct
-*.4tc
-*.idv
-*.lg
-*.trc
-*.xref
-
-# hypdoc
-*.hd
-
-# hyperref
-*.brf
-
-# knitr
-*-concordance.tex
-# TODO Uncomment the next line if you use knitr and want to ignore its generated tikz files
-# *.tikz
-*-tikzDictionary
-
-# listings
-*.lol
-
-# luatexja-ruby
-*.ltjruby
-
-# makeidx
-*.idx
-*.ilg
-*.ind
-
-# minitoc
-*.maf
-*.mlf
-*.mlt
-*.mtc[0-9]*
-*.slf[0-9]*
-*.slt[0-9]*
-*.stc[0-9]*
-
-# minted
-_minted*
-*.data.minted
-*.pyg
-
-# morewrites
-*.mw
-
-# newpax
-*.newpax
-
-# nomencl
-*.nlg
-*.nlo
-*.nls
-
-# pax
-*.pax
-
-# pdfpcnotes
-*.pdfpc
-
-# sagetex
-*.sagetex.sage
-*.sagetex.py
-*.sagetex.scmd
-
-# scrwfile
-*.wrt
-
-# svg
-svg-inkscape/
-
-# sympy
-*.sout
-*.sympy
-sympy-plots-for-*.tex/
-
-# pdfcomment
-*.upa
-*.upb
-
-# pythontex
-*.pytxcode
-pythontex-files-*/
-
-# tcolorbox
-*.listing
-
-# thmtools
-*.loe
-
-# TikZ & PGF
-*.dpth
-*.md5
-*.auxlock
-
-# titletoc
-*.ptc
-
-# todonotes
-*.tdo
-
-# vhistory
-*.hst
-*.ver
-
-# easy-todo
-*.lod
-
-# xcolor
-*.xcp
-
-# xmpincl
-*.xmpi
-
-# xindy
-*.xdy
-
-# xypic precompiled matrices and outlines
-*.xyc
-*.xyd
-
-# endfloat
-*.ttt
-*.fff
-
-# Latexian
-TSWLatexianTemp*
-
-## Editors:
-# WinEdt
+# ============================================================
+# 编辑器 / 操作系统
+# ============================================================
+.vscode/
+.idea/
+*.swp
+*~
 *.bak
 *.sav
-
-# Texpad
-.texpadtmp
-
-# LyX
-*.lyx~
-
-# Kile
-*.backup
-
-# gummi
-.*.swp
-
-# KBibTeX
-*~[0-9]*
-
-# TeXnicCenter
-*.tps
-
-# auto folder when using emacs and auctex
-./auto/*
-*.el
-
-# expex forward references with \gathertags
-*-tags.tex
-
-# standalone packages
-*.sta
-
-# Makeindex log files
-*.lpz
-
-# xwatermark package
-*.xwm
-
-# REVTeX puts footnotes in the bibliography by default, unless the nofootinbib
-# option is specified. Footnotes are the stored in a file with suffix Notes.bib.
-# Uncomment the next line to have this generated file ignored.
-#*Notes.bib
+*.orig
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,11 @@
+MARS command-line flow used for official txt test cases:
+
+1. Assemble only:
+   java -jar Mars4_5.jar nc a test.asm
+
+2. Export machine code from text segment:
+   java -jar Mars4_5.jar nc a dump .text HexText text.hex test.asm
+
+The generated HexText file contains one 32-bit instruction per line and can
+be post-processed into the instruction memory initialization format needed by
+the local Verilog simulation flow.
